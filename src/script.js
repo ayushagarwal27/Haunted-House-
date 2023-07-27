@@ -2,10 +2,17 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import * as dat from "lil-gui";
 
+function init() {
+  const loadingBox = document.querySelector(".loading-box");
+  loadingBox.style.display = "none";
+}
+
 THREE.ColorManagement.enabled = false;
 
 const btn = document.querySelector("button");
 const audio = document.querySelector("#audio-el");
+
+init();
 
 const soundOffSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 7.358v15.642l-8-5v-.785l8-9.857zm3-6.094l-1.548-1.264-3.446 4.247-6.006 3.753v3.646l-2 2.464v-6.11h-4v10h.843l-3.843 4.736 1.548 1.264 18.452-22.736z"/></svg>`;
 
@@ -345,7 +352,7 @@ const moonGeometry = new THREE.SphereGeometry(1, 15, 8);
 const moonMaterial = new THREE.MeshBasicMaterial({
   map: moonColorTexture,
   aoMap: moonAmbientOcclusionTexture,
-  normalMap: moonNormalTexture,
+  // normalMap: moonNormalTexture,
   // roughnessMap: moonRoughnessTexture,
 });
 const moon = new THREE.Mesh(moonGeometry, moonMaterial);
